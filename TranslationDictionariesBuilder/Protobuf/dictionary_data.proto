@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package mydata;
+
+message DataMap {
+  map<string, Values> data = 1;
+}
+
+message Values {
+  repeated string value = 1;
+}

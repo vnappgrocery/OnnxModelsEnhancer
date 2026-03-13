@@ -9,6 +9,12 @@ onnx/
 # tatoeba db
 TatoebaBuilder/tatoeba.db
 
+TranslationDictionariesBuilder/apertium-english-bidix/
+TranslationDictionariesBuilder/apertium-english-bidix_unfilter/
+
+TranslationDictionariesBuilder/github_token.txt
+TranslationDictionariesBuilder/translation_dict.db
+
 # C extensions
 *.so
 
