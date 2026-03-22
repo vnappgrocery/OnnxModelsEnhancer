@@ -37,9 +37,13 @@ def fill_sentences(cursor: sqlite3.Cursor):
         spamreader = csv.reader(csvfile, delimiter='	', quotechar='|')
         for row in spamreader:
             #print("id: "+row[0]+", lang: "+row[1]+", text: "+row[2])
+            lang = row[1]
+            # we replace some language codes with more general ones
+            if(lang == "cmn"):
+                lang = "zho"
             cursor.execute(
                 "INSERT INTO sentences VALUES (?, ?, ?)",
-                (int(row[0]), row[1], row[2])
+                (int(row[0]), lang, row[2])
             )
 
 
