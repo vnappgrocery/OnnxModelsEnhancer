@@ -14,6 +14,7 @@ import xml.etree.ElementTree as ET
 import pycountry
 
 from TranslationDictionariesBuilder.Protobuf import dictionary_data_pb2
+from TranslationDictionariesBuilder.tools import create_and_define_database, _normalize_text, extract_surface_text, find_first_child, get_lang_codes, local_name, read_pairs_from_db, build_bidirectional_dicts, upsert_dictionary
 
 ORG = "apertium"
 OUTDIR = "TranslationDictionariesBuilder/apertium-english-bidix"
@@ -90,21 +91,6 @@ def list_org_repos():
         time.sleep(0.2)
 
     return repos
-
-def get_lang_codes(code: str) -> tuple[str | None, str | None]:
-    code = code.strip().lower()
-
-    if len(code) == 2:
-        lang = pycountry.languages.get(alpha_2=code)
-    elif len(code) == 3:
-        lang = pycountry.languages.get(alpha_3=code)
-    else:
-        return None, None
-
-    if not lang:
-        return None, None
-
-    return getattr(lang, "alpha_2", None), getattr(lang, "alpha_3", None)
 
 
 def download_apertium():
@@ -212,82 +198,7 @@ def download_apertium():
 
 # Builder
 
-def create_and_define_database():
-    conn = sqlite3.connect("TranslationDictionariesBuilder/translation_dict.db")
-    cursor = conn.cursor()
-
-    cursor.execute(
-        """CREATE TABLE IF NOT EXISTS dictionaries(
-            srcLang CHAR(3),
-            toEnglish BOOLEAN,
-            data MEDIUMBLOB,
-            PRIMARY KEY (srcLang, toEnglish)
-        );"""
-    )
-
-    return conn, cursor
-
-
-def local_name(tag: str) -> str:
-    """Strip XML namespace if present."""
-    if "}" in tag:
-        return tag.split("}", 1)[1]
-    return tag
-
-
-def _normalize_text(text: str) -> str:
-    if text is None:
-        return None
-
-    # Unicode NFC normalization
-    text = unicodedata.normalize("NFC", text)
-
-    # Standardize punctuation
-    replacements = {
-        "“": '"',
-        "”": '"',
-        "‘": "'",
-        "’": "'",
-        "–": "-",
-        "—": "-"
-    }
-    for k, v in replacements.items():
-        text = text.replace(k, v)
-
-    # Trim
-    text = text.strip()
-
-    # Collapse whitespace
-    text = re.sub(r"\s+", " ", text)
-
-    # Case normalization
-    text = text.casefold()
-
-    return text
-
-
-def extract_surface_text(elem: ET.Element) -> str:
-    """
-    Extract visible lexical text from an Apertium XML node.
-
-    For most bilingual .dix files, <l> and <r> contain word text plus tags like <s/>.
-    itertext() gives the textual content and ignores markup, which is what we want.
-    """
-    if elem is None:
-        return ""
-    text = "".join(elem.itertext())
-    return _normalize_text(text)
-
-
-def find_first_child(parent: ET.Element, child_name: str):
-    for child in parent:
-        if local_name(child.tag) == child_name:
-            return child
-    return None
-
-
-
-def parse_dix_pairs(dix_path: Path):
+def parse_dix_pairs(dix_path: Path) -> list[tuple[str, str]]:
     """
     Parse bilingual pairs from a .dix file.
 
@@ -332,43 +243,6 @@ def parse_dix_pairs(dix_path: Path):
     return pairs
 
 
-def build_bidirectional_dicts(pairs):
-    """
-    Build two multi-value dictionaries:
-      - forward[left]  -> sorted list of rights
-      - reverse[right] -> sorted list of lefts
-    """
-    forward = defaultdict(set)
-    reverse = defaultdict(set)
-
-    for left, right in pairs:
-        forward[left].add(right)
-        reverse[right].add(left)
-
-    forward = {k: sorted(v) for k, v in sorted(forward.items())}
-    reverse = {k: sorted(v) for k, v in sorted(reverse.items())}
-    return forward, reverse
-
-
-def dict_to_protobuf_bytes(mapping: dict[str, list[str]]) -> bytes:
-    """
-    Serialize a Python dictionary[str, list[str]] into protobuf bytes.
-    """
-    dictionary = dictionary_data_pb2.DataMap()
-    for key, values in mapping.items():
-        dictionary.data[key].value.extend(values)
-    return dictionary.SerializeToString()
-
-
-def protobuf_bytes_to_dict(blob: bytes) -> dict[str, list[str]]:
-    """
-    Optional helper to deserialize protobuf bytes back to a Python dict.
-    """
-    dictionary = dictionary_data_pb2.DataMap()
-    dictionary.ParseFromString(blob)
-    return {entry.key: list(entry.values) for entry in dictionary.entries}
-
-
 def find_single_dix_file(folder: Path) -> Path:
     dix_files = list(folder.glob("*.dix"))
     if not dix_files:
@@ -383,7 +257,7 @@ def language_code_from_folder(folder: Path) -> str:
     Uses the folder name as srcLang.
     Expects names like 'ita', 'spa', 'cat', etc.
     """
-    #todo: modificarlo per estrarre bene la srcLang (anche per codici a 2 lettere)
+
     name = folder.name.strip()
     pair = name.removeprefix("apertium-")
     srcLang = pair.split("-")[0]
@@ -392,20 +266,6 @@ def language_code_from_folder(folder: Path) -> str:
     if len(srcLangCode) != 3:
         raise ValueError(f"Folder name '{folder.name}' is not a 3-letter language code")
     return srcLangCode
-
-
-def upsert_dictionary(conn: sqlite3.Connection, src_lang: str, to_english: bool, mapping: dict[str, list[str]]):
-    blob = dict_to_protobuf_bytes(mapping)
-    cur = conn.cursor()
-    cur.execute(
-        """
-        INSERT INTO dictionaries(srcLang, toEnglish, data)
-        VALUES (?, ?, ?)
-        ON CONFLICT(srcLang, toEnglish)
-        DO UPDATE SET data = excluded.data
-        """,
-        (src_lang, int(to_english), blob),
-    )
 
 
 def process_root(root_dir: Path = Path("TranslationDictionariesBuilder/apertium-english-bidix")):
@@ -424,7 +284,14 @@ def process_root(root_dir: Path = Path("TranslationDictionariesBuilder/apertium-
         dix_path = find_single_dix_file(subfolder)
 
         pairs = parse_dix_pairs(dix_path)
-        forward, reverse = build_bidirectional_dicts(pairs)
+        oldPairs = read_pairs_from_db(conn, src_lang)
+
+        if oldPairs is not None:
+            oldPairs.extend(pairs)
+        else:
+            oldPairs = pairs
+
+        forward, reverse = build_bidirectional_dicts(oldPairs)
 
         # Assumption:
         #   <l> is the source-language side

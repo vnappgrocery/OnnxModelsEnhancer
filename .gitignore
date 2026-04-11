@@ -14,6 +14,8 @@ TranslationDictionariesBuilder/apertium-english-bidix_unfilter/
 
 TranslationDictionariesBuilder/github_token.txt
 TranslationDictionariesBuilder/translation_dict.db
+TranslationDictionariesBuilder/translation_dict_redux.db
+TranslationDictionariesBuilder/wiktionary_data.jsonl
 
 # C extensions
 *.so
