@@ -1,4 +1,5 @@
 from collections import defaultdict
+from enum import Enum
 from pathlib import Path
 import re
 import shutil
@@ -198,6 +199,25 @@ def count_keys(blob: bytes) -> int:
     data_map.ParseFromString(blob)
     return len(data_map.data)
 
+def count_words(blob: bytes) -> int:
+    data_map = dictionary_data_pb2.DataMap()
+    data_map.ParseFromString(blob)
+    count = 0
+    for value in data_map.data.values():
+        count += len(value.value)+1
+    return count
+
+def count_text_bytes(blob: bytes) -> int:
+    data_map = dictionary_data_pb2.DataMap()
+    data_map.ParseFromString(blob)
+    count = 0
+    for value in data_map.data.values():
+        for word in value.value:
+            count += len(word.encode("utf-8"))
+    for key in data_map.data.keys():
+        count += len(key.encode("utf-8"))
+    return count
+
 
 def create_db_redux_copy():
     src = Path("TranslationDictionariesBuilder/translation_dict.db")
@@ -252,3 +272,46 @@ def create_db_redux_copy():
 
     finally:
         conn.close()
+
+class CountType(Enum):
+    KEYS = 0
+    WORDS = 1
+    TEXT_BYTES = 2
+
+def count_lang_keys(db_path: str = "TranslationDictionariesBuilder/translation_dict_redux.db", count_type: CountType = CountType.KEYS):
+    conn = sqlite3.connect(Path(db_path))
+    try:
+        cur = conn.cursor()
+
+        cur.execute("""
+            SELECT srcLang, toEnglish, data
+            FROM dictionaries
+        """)
+        rows = cur.fetchall()
+
+        totals_by_lang: dict[str, int] = {}
+
+        for src_lang, to_english, blob in rows:
+            key_count = 0
+            if count_type == CountType.KEYS:
+                key_count = count_keys(blob)
+            elif count_type == CountType.WORDS:
+                key_count = count_words(blob)
+            elif count_type == CountType.TEXT_BYTES:
+                key_count = count_text_bytes(blob)
+            totals_by_lang[src_lang] = totals_by_lang.get(src_lang, 0) + key_count
+
+        generalTotal = 0
+        print("\nTotal keys by language:")
+        for lang, total in sorted(totals_by_lang.items(), key=lambda item: item[1], reverse=True):
+            generalTotal += total
+            print(f"  {lang}: {total}")
+        
+        print("\nTotal keys: "+str(generalTotal))
+
+    finally:
+        conn.close()
+
+
+if __name__ == "__main__":
+    count_lang_keys(count_type=CountType.TEXT_BYTES)
