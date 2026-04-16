@@ -1,7 +1,7 @@
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-from TranslationDictionariesBuilder.tools import build_bidirectional_dicts, create_and_define_database, extract_surface_text, find_first_child, local_name, read_pairs_from_db, upsert_dictionary
+from TranslationDictionariesBuilder.tools import _normalize_text, build_bidirectional_dicts, create_and_define_database, extract_surface_text, find_first_child, local_name, read_pairs_from_db, upsert_dictionary
 
 
 def parse_dix_pairs(dix_path: Path, toEnglish=True) -> list[tuple[str, str]]:
@@ -57,9 +57,9 @@ def parse_dix_pairs(dix_path: Path, toEnglish=True) -> list[tuple[str, str]]:
             continue
         
         if(toEnglish):
-            pairs.append((left, right))
+            pairs.append((_normalize_text(left), _normalize_text(right)))
         else:
-            pairs.append((right, left))
+            pairs.append((_normalize_text(right), _normalize_text(left)))
 
     return pairs
 

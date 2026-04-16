@@ -238,7 +238,7 @@ def parse_dix_pairs(dix_path: Path) -> list[tuple[str, str]]:
         if not left or not right:
             continue
 
-        pairs.append((left, right))
+        pairs.append((_normalize_text(left), _normalize_text(right)))
 
     return pairs
 

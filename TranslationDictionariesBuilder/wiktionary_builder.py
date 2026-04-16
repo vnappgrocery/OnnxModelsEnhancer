@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from TranslationDictionariesBuilder.tools import build_bidirectional_dicts, create_and_define_database, get_all_languages_from_db, get_lang_codes, read_pairs_from_db, upsert_dictionary
+from TranslationDictionariesBuilder.tools import _normalize_text, build_bidirectional_dicts, create_and_define_database, get_all_languages_from_db, get_lang_codes, read_pairs_from_db, upsert_dictionary
 
 
 def process_root(dict_file: Path = Path("TranslationDictionariesBuilder/wiktionary_data.jsonl")):
@@ -43,9 +43,9 @@ def process_root(dict_file: Path = Path("TranslationDictionariesBuilder/wiktiona
                     continue
 
                 if(langCode in allPairs):
-                    allPairs[langCode].append((translation.get("word"), enWord))
+                    allPairs[langCode].append((_normalize_text(translation.get("word")), _normalize_text(enWord)))
                 else:
-                    allPairs[langCode] = [(enWord, translation.get("word"))]
+                    allPairs[langCode] = [(_normalize_text(enWord), _normalize_text(translation.get("word")))]
             
     for lang, pairs in allPairs.items():
         #if(len(pairs) < 5000): continue
