@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from TranslationDictionariesBuilder.tools import _normalize_text, build_bidirectional_dicts, create_and_define_database, get_all_languages_from_db, get_lang_codes, read_pairs_from_db, upsert_dictionary
+from TranslationDictionariesBuilder.tools import _normalize_text, build_bidirectional_dicts, convert_to_macrolanguage, create_and_define_database, get_all_languages_from_db, get_lang_codes, read_pairs_from_db, upsert_dictionary
 
 
 def process_root(dict_file: Path = Path("TranslationDictionariesBuilder/wiktionary_data.jsonl")):
@@ -12,7 +12,7 @@ def process_root(dict_file: Path = Path("TranslationDictionariesBuilder/wiktiona
     # we insert all the old data inside allPairs
     languages = get_all_languages_from_db(conn)
     for lang in languages:
-        allPairs[lang] = read_pairs_from_db(conn, lang)
+        allPairs[lang] = read_pairs_from_db(conn, lang, toEnglish=False)
 
     processed = 0
 
@@ -42,10 +42,12 @@ def process_root(dict_file: Path = Path("TranslationDictionariesBuilder/wiktiona
                     print("Skipped: "+enWord)
                     continue
 
-                if(langCode in allPairs):
-                    allPairs[langCode].append((_normalize_text(translation.get("word")), _normalize_text(enWord)))
+                macroLangCode = convert_to_macrolanguage(langCode)
+
+                if(macroLangCode in allPairs):
+                    allPairs[macroLangCode].append((_normalize_text(enWord), _normalize_text(translation.get("word"))))
                 else:
-                    allPairs[langCode] = [(_normalize_text(enWord), _normalize_text(translation.get("word")))]
+                    allPairs[macroLangCode] = [(_normalize_text(enWord), _normalize_text(translation.get("word")))]
             
     for lang, pairs in allPairs.items():
         #if(len(pairs) < 5000): continue
@@ -53,14 +55,14 @@ def process_root(dict_file: Path = Path("TranslationDictionariesBuilder/wiktiona
         forward, reverse = build_bidirectional_dicts(pairs)
 
         # Assumption:
-        #   <l> is the source-language side
-        #   <r> is the English side
+        #   <l> is the English side
+        #   <r> is the source-language side
         #
         # So:
         #   toEnglish=True  -> language -> English
         #   toEnglish=False -> English -> language
-        upsert_dictionary(conn, lang, True, forward)
-        upsert_dictionary(conn, lang, False, reverse)
+        upsert_dictionary(conn, lang, False, forward)
+        upsert_dictionary(conn, lang, True, reverse)
 
         conn.commit()
         processed += 1

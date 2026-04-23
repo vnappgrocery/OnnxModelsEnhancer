@@ -1,7 +1,7 @@
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-from TranslationDictionariesBuilder.tools import _normalize_text, build_bidirectional_dicts, create_and_define_database, extract_surface_text, find_first_child, local_name, read_pairs_from_db, upsert_dictionary
+from TranslationDictionariesBuilder.tools import _normalize_text, build_bidirectional_dicts, convert_to_macrolanguage, create_and_define_database, extract_surface_text, find_first_child, local_name, read_pairs_from_db, upsert_dictionary
 
 
 def parse_dix_pairs(dix_path: Path, toEnglish=True) -> list[tuple[str, str]]:
@@ -84,15 +84,18 @@ def process_root(root_dir: Path = Path("TranslationDictionariesBuilder/freedict_
         if not str(dictFile).lower().endswith(".tei"):
             continue
 
-        src_lang, tgtLang = language_codes_from_file(dictFile)
-
+        src_lang, tgt_lang = language_codes_from_file(dictFile)
+        
+        lang = src_lang
         toEnglish = True
-
         if(src_lang == "eng"):
             toEnglish = False
+            lang = tgt_lang
+
+        macroLang = convert_to_macrolanguage(lang)
 
         pairs = parse_dix_pairs(dictFile, toEnglish)
-        oldPairs = read_pairs_from_db(conn, src_lang)
+        oldPairs = read_pairs_from_db(conn, macroLang)
 
         if oldPairs is not None:
             oldPairs.extend(pairs)
@@ -100,10 +103,6 @@ def process_root(root_dir: Path = Path("TranslationDictionariesBuilder/freedict_
             oldPairs = pairs
 
         forward, reverse = build_bidirectional_dicts(oldPairs)
-
-        lang = src_lang
-        if(src_lang == "eng"):
-            lang = tgtLang
 
 
         # Assumption:
@@ -113,8 +112,8 @@ def process_root(root_dir: Path = Path("TranslationDictionariesBuilder/freedict_
         # So:
         #   toEnglish=True  -> language -> English
         #   toEnglish=False -> English -> language
-        upsert_dictionary(conn, lang, True, forward)
-        upsert_dictionary(conn, lang, False, reverse)
+        upsert_dictionary(conn, macroLang, True, forward)
+        upsert_dictionary(conn, macroLang, False, reverse)
 
         conn.commit()
         processed += 1

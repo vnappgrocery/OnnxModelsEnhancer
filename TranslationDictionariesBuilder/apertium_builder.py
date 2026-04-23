@@ -14,7 +14,7 @@ import xml.etree.ElementTree as ET
 import pycountry
 
 from TranslationDictionariesBuilder.Protobuf import dictionary_data_pb2
-from TranslationDictionariesBuilder.tools import create_and_define_database, _normalize_text, extract_surface_text, find_first_child, get_lang_codes, local_name, read_pairs_from_db, build_bidirectional_dicts, upsert_dictionary
+from TranslationDictionariesBuilder.tools import convert_to_macrolanguage, create_and_define_database, _normalize_text, extract_surface_text, find_first_child, get_lang_codes, local_name, read_pairs_from_db, build_bidirectional_dicts, upsert_dictionary
 
 ORG = "apertium"
 OUTDIR = "TranslationDictionariesBuilder/apertium-english-bidix"
@@ -198,7 +198,7 @@ def download_apertium():
 
 # Builder
 
-def parse_dix_pairs(dix_path: Path) -> list[tuple[str, str]]:
+def parse_dix_pairs(dix_path: Path, toEnglish=True) -> list[tuple[str, str]]:
     """
     Parse bilingual pairs from a .dix file.
 
@@ -238,7 +238,10 @@ def parse_dix_pairs(dix_path: Path) -> list[tuple[str, str]]:
         if not left or not right:
             continue
 
-        pairs.append((_normalize_text(left), _normalize_text(right)))
+        if(toEnglish):
+            pairs.append((_normalize_text(left), _normalize_text(right)))
+        else:
+            pairs.append((_normalize_text(right), _normalize_text(left)))
 
     return pairs
 
@@ -262,10 +265,15 @@ def language_code_from_folder(folder: Path) -> str:
     pair = name.removeprefix("apertium-")
     srcLang = pair.split("-")[0]
     srcLangCode = get_lang_codes(srcLang)[1]
-
     if len(srcLangCode) != 3:
         raise ValueError(f"Folder name '{folder.name}' is not a 3-letter language code")
-    return srcLangCode
+    
+    tgtLang = pair.split("-")[1]
+    tgtLangCode = get_lang_codes(tgtLang)[1]
+    if len(tgtLangCode) != 3:
+        raise ValueError(f"Folder name '{folder.name}' is not a 3-letter language code")
+
+    return srcLangCode, tgtLangCode
 
 
 def process_root(root_dir: Path = Path("TranslationDictionariesBuilder/apertium-english-bidix")):
@@ -280,11 +288,19 @@ def process_root(root_dir: Path = Path("TranslationDictionariesBuilder/apertium-
         if not subfolder.is_dir():
             continue
 
-        src_lang = language_code_from_folder(subfolder)
+        src_lang, tgt_lang = language_code_from_folder(subfolder)
         dix_path = find_single_dix_file(subfolder)
 
-        pairs = parse_dix_pairs(dix_path)
-        oldPairs = read_pairs_from_db(conn, src_lang)
+        lang = src_lang
+        toEnglish = True
+        if(src_lang == "eng"):
+            toEnglish = False
+            lang = tgt_lang
+
+        macroLang = convert_to_macrolanguage(lang)
+
+        pairs = parse_dix_pairs(dix_path, toEnglish)
+        oldPairs = read_pairs_from_db(conn, macroLang)
 
         if oldPairs is not None:
             oldPairs.extend(pairs)
@@ -300,17 +316,17 @@ def process_root(root_dir: Path = Path("TranslationDictionariesBuilder/apertium-
         # So:
         #   toEnglish=True  -> language -> English
         #   toEnglish=False -> English -> language
-        upsert_dictionary(conn, src_lang, True, forward)
-        upsert_dictionary(conn, src_lang, False, reverse)
+        upsert_dictionary(conn, macroLang, True, forward)
+        upsert_dictionary(conn, macroLang, False, reverse)
 
         conn.commit()
         processed += 1
 
         print(
-            f"[OK] {src_lang}: {dix_path.name} | "
+            f"[OK] {lang}: {dix_path.name} | "
             f"{len(pairs)} pairs | "
-            f"{len(forward)} {src_lang}->en keys | "
-            f"{len(reverse)} en->{src_lang} keys"
+            f"{len(forward)} {lang}->en keys | "
+            f"{len(reverse)} en->{lang} keys"
         )
 
     conn.close()

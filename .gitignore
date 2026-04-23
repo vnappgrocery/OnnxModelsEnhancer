@@ -16,6 +16,12 @@ TranslationDictionariesBuilder/github_token.txt
 TranslationDictionariesBuilder/translation_dict.db
 TranslationDictionariesBuilder/translation_dict_redux.db
 TranslationDictionariesBuilder/wiktionary_data.jsonl
+TranslationDictionariesBuilder/translation_dict_apertium.db
+TranslationDictionariesBuilder/translation_dict_apertium2.db
+TranslationDictionariesBuilder/translation_dict_wiki.db
+TranslationDictionariesBuilder/translation_dict_freedict.db
+TranslationDictionariesBuilder/translation_dict_redux_old.db
+TranslationDictionariesBuilder/translation_dict_ordered.db
 
 # C extensions
 *.so

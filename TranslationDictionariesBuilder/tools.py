@@ -42,8 +42,45 @@ def _normalize_text(text: str) -> str:
     return text
 
 
-def create_and_define_database():
-    conn = sqlite3.connect("TranslationDictionariesBuilder/translation_dict.db")
+def convert_to_macrolanguage(lang_code: str):
+    """
+    Converts a 3-letter dialect code to its corresponding macrolanguage code
+    based on standardized mapping. Returns the original code if no mapping exists.
+    This conversion is based on dictionaries to run faster.
+    """
+    
+    # Mapping dictionary: Dialect (Key) -> Macrolanguage (Value)
+    mapping = {
+        # Chinese (zho)
+        'cmn': 'zho', 'cjy': 'zho', 'czh': 'zho', 'gan': 'zho', 
+        'hsn': 'zho', 'wuu': 'zho', 'hak': 'zho',
+        
+        # Persian (fas)
+        'pes': 'fas', 'prs': 'fas',
+        
+        # Malay (msa)
+        'zsm': 'msa', 'meo': 'msa', 'vkt': 'msa', 'mfa': 'msa',
+        
+        # Arabic (ara)
+        'arb': 'ara', 'arz': 'ara', 'apc': 'ara', 'acm': 'ara', 
+        'afb': 'ara', 'ary': 'ara',
+        
+        # Norwegian (nor)
+        'nob': 'nor',
+        
+        # Serbo-Croatian (hbs)
+        'srp': 'hbs', 'hrv': 'hbs', 'bos': 'hbs',
+        
+        # Kurdish (kur)
+        'kmr': 'kur'
+    }
+    
+    # .get() returns the mapped value if found, otherwise returns the original lang_code
+    return mapping.get(lang_code.lower(), lang_code)
+
+
+def create_and_define_database(db_path: str = "TranslationDictionariesBuilder/translation_dict.db"):
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
     cursor.execute(
@@ -58,13 +95,13 @@ def create_and_define_database():
     return conn, cursor
 
 
-def read_pairs_from_db(conn: sqlite3.Connection, src_lang: str) -> list[tuple[str, str]]:
+def read_pairs_from_db(conn: sqlite3.Connection, src_lang: str, toEnglish = True) -> list[tuple[str, str]]:
     """
     Returns:
         list[tuple[str, str]] where each tuple is (left_word, right_word)
     """
     cur = conn.cursor()
-    cur.execute("SELECT data FROM dictionaries WHERE srcLang = ? AND toEnglish = ?", (src_lang, True))
+    cur.execute("SELECT data FROM dictionaries WHERE srcLang = ? AND toEnglish = ?", (src_lang, toEnglish))
     rows = cur.fetchall()
     if(len(rows) > 0):
         dictionary = protobuf_bytes_to_dict(rows[0][0])
@@ -73,6 +110,21 @@ def read_pairs_from_db(conn: sqlite3.Connection, src_lang: str) -> list[tuple[st
             for value in values:
                 pairs.append((key, value))
         return pairs
+    else:
+        return None
+    
+
+def read_data_from_db(conn: sqlite3.Connection, src_lang: str, toEnglish = True) -> dict[str, list[str]]:
+    """
+    Returns:
+        list[tuple[str, str]] where each tuple is (left_word, right_word)
+    """
+    cur = conn.cursor()
+    cur.execute("SELECT data FROM dictionaries WHERE srcLang = ? AND toEnglish = ?", (src_lang, toEnglish))
+    rows = cur.fetchall()
+    if(len(rows) > 0):
+        dictionary = protobuf_bytes_to_dict(rows[0][0])
+        return dictionary
     else:
         return None
 
@@ -87,8 +139,8 @@ def get_all_languages_from_db(conn: sqlite3.Connection) -> list[str]:
 def build_bidirectional_dicts(pairs):
     """
     Build two multi-value dictionaries:
-      - forward[left]  -> sorted list of rights
-      - reverse[right] -> sorted list of lefts
+      - forward[left]  -> list of rights
+      - reverse[right] -> list of lefts
     """
     forward = defaultdict(set)
     reverse = defaultdict(set)
@@ -99,8 +151,8 @@ def build_bidirectional_dicts(pairs):
         if(right not in reverse or left not in reverse[right]):
             reverse[right].add(left)
 
-    forward = {k: sorted(v) for k, v in sorted(forward.items())}
-    reverse = {k: sorted(v) for k, v in sorted(reverse.items())}
+    forward = {k: v for k, v in forward.items()}
+    reverse = {k: v for k, v in reverse.items()}
     return forward, reverse
 
 
