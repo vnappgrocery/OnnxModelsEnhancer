@@ -146,10 +146,11 @@ def build_bidirectional_dicts(pairs):
     reverse = defaultdict(set)
 
     for left, right in pairs:
-        if(left not in forward or right not in forward[left]):
-            forward[left].add(right)
-        if(right not in reverse or left not in reverse[right]):
-            reverse[right].add(left)
+        if(left != right):  #this is to remove the false translations (for example in apertium we have ciao -> ciao for the en->ita dict, that will be used to do the false translation ciao -> ciao also for ita->en)
+            if(left not in forward or right not in forward[left]):
+                forward[left].add(right)
+            if(right not in reverse or left not in reverse[right]):
+                reverse[right].add(left)
 
     forward = {k: v for k, v in forward.items()}
     reverse = {k: v for k, v in reverse.items()}

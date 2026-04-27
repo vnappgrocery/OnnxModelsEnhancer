@@ -1,7 +1,10 @@
+import json
 from math import isnan
 import time
 from wordfreq import zipf_frequency, available_languages
 from sentence_transformers import SentenceTransformer, util
+import torch
+torch.set_num_threads(8)
 
 from TranslationDictionariesBuilder.tools import get_lang_codes
 
@@ -40,7 +43,7 @@ class WordTranslationRanker:
             'ind', 'ita', 'jpn', 'kat', 'kor', 'kur', 'lit', 'lav', 'mkd', 'mon', 'mar', 'msa', 'mya', 'nor', 'nld', 'pol', 'por', 'por-br', 'ron', 'rus', 'slk', 'slv',
             'sqi', 'srp', 'swe', 'tha', 'tur', 'ukr', 'urd', 'vie', 'zho-cn', 'zho-tw', 'zho', 'hbs'
         ]
-        self.models.append((model_name, supported_laguages, SentenceTransformer(model_name)))
+        self.models.append((model_name, supported_laguages, SentenceTransformer(model_name, backend="onnx", model_kwargs={"file_name": "onnx/model_O3.onnx"})))
         model_name = "setu4993/LEALLA-base"
         
         supported_laguages = [
@@ -60,6 +63,7 @@ class WordTranslationRanker:
         self.semantic_weight = semantic_weight
         self.frequency_weight = frequency_weight
 
+
     @staticmethod
     def _normalize_frequency(word: str, lang: str) -> float:
         """
@@ -75,6 +79,7 @@ class WordTranslationRanker:
         if isnan(z):
             z = 0.0
         return max(0.0, min(1.0, z / 8.0))
+
 
     def rank(self, source_word: str, candidates: list[str], target_lang: str, log=False) -> list[str]:
         if not candidates:
@@ -95,6 +100,7 @@ class WordTranslationRanker:
                 semantic_scores = util.cos_sim(source_emb, cand_embs)[0].tolist()
 
         results = []
+        init_time_freq = time.time()
         for candidate, sem in zip(candidates, semantic_scores):
             freq = self._normalize_frequency(candidate, tgt_lang_code[0])
             final = self.semantic_weight * float(sem) + self.frequency_weight * freq
@@ -104,6 +110,7 @@ class WordTranslationRanker:
                 "frequency_score": float(freq),
                 "final_score": float(final),
             })
+        if(log): print("Word "+source_word+" freq calculated in "+str(time.time()-init_time_freq)+" s")
 
         if all(v["final_score"] == 0 for v in results):
             return []
@@ -113,8 +120,91 @@ class WordTranslationRanker:
         for result in results:
             resultTexts.append(result["translation"])
 
-        if(log): print("Word "+source_word+"reordered in "+str(time.time()-init_time)+" s")
+        if(log): print("Word "+source_word+" reordered in "+str(time.time()-init_time)+" s")
         return resultTexts
+    
+
+    def rank_batch(self, data: dict[str, list[str]], target_lang: str, log=False, fileLogSrcLang: str = None) -> dict[str, list[str]]:
+        if not data: return []
+        
+        tgt_lang_code = get_lang_codes(target_lang)
+        if not tgt_lang_code or not tgt_lang_code[0]: return []
+
+        init_time = time.time()
+
+        # Flatten all source words and candidates for the transformer
+        all_source_words = list(data.keys())
+        all_candidates_flat = []
+        for word in all_source_words:
+            all_candidates_flat.extend(data[word])
+
+        if(log): print("Flattening: "+str(time.time()-init_time)+"s")
+        init_time = time.time()
+        embed_time=0
+        dot_time=0
+        
+        # Process through each model
+        # We'll store the final semantic scores in a nested list matching 'tasks'
+        semantic_scores_map = {word: [0.0] * len(data[word]) for word in all_source_words}
+
+        for model_name, supported_langs, model in self.models:
+            if tgt_lang_code[1] in supported_langs:
+                init_time2=time.time()
+                # Encode all source words and all candidates in two big batches
+                src_embs = model.encode(all_source_words, convert_to_tensor=True, batch_size=256)
+                cand_embs = model.encode(all_candidates_flat, convert_to_tensor=True, batch_size=256)
+                embed_time += time.time()-init_time2
+
+                # Calculate similarities
+                # We map the flattened candidates back to their respective sources
+                cursor = 0
+                for i, source in enumerate(all_source_words):
+                    num_cands = len(data[source])
+                    if num_cands == 0: continue
+
+                    # Slice the flat candidate embeddings to get only this word's translations
+                    current_src_emb = src_embs[i].unsqueeze(0)
+                    current_cand_embs = cand_embs[cursor : cursor + num_cands]
+
+                    init_time2 = time.time()
+                    # Dot product / Cosine Sim (Batch calculation)
+                    sims = util.cos_sim(current_src_emb, current_cand_embs)[0].tolist()
+                    dot_time += time.time()-init_time2
+                    semantic_scores_map[source] = sims
+                    cursor += num_cands
+                break
+        
+        if(log): print("Similarity embed: "+str(embed_time)+"s")
+        if(log): print("Similarity dot: "+str(dot_time)+"s")
+        if(log): print("Similarity total: "+str(time.time()-init_time)+"s")
+        init_time = time.time()
+
+        # Final Ranking and Re-assembly
+        ranked_dict = {}
+        info_dict = {}
+        for source in all_source_words:
+            candidates = data[source]
+            scores = semantic_scores_map[source]
+            
+            scored_candidates = []
+            for cand, sem_score in zip(candidates, scores):
+                freq = self._normalize_frequency(cand, tgt_lang_code[0])
+                semantic_score = self.semantic_weight * sem_score
+                frequency_score = self.frequency_weight * freq
+                final_score = semantic_score + frequency_score
+                scored_candidates.append((cand, final_score, semantic_score, frequency_score))
+
+            # Sort candidates by score descending
+            scored_candidates.sort(key=lambda x: x[1], reverse=True)
+            ranked_dict[source] = [item[0] for item in scored_candidates]
+            if(fileLogSrcLang): info_dict[source] = scored_candidates
+        
+        if(log): print("Frequency and ordering: "+str(time.time()-init_time)+"s")
+        if(fileLogSrcLang):
+            with open('TranslationDictionariesBuilder/logs/reorder_info_'+fileLogSrcLang+"_"+tgt_lang_code[1]+'.json', 'w') as f:
+                json.dump(info_dict, f)
+
+        return ranked_dict
     
 
     def is_lang_compatible(self, lang: str) -> bool:

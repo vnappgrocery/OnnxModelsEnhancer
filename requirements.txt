@@ -25,3 +25,7 @@ protobuf
 pycountry
 wordfreq==3.1.1
 sentence_transformers==5.4.1
+mecab-python3==1.0.12
+ipadic==1.0.0
+mecab_ko_dic==1.0.0
+jieba==0.42.1
