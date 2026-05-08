@@ -62,17 +62,11 @@ def print_dict_infos(conn: sqlite3.Connection, dict_path: str, lang:str, file_su
     
 
 if __name__ == "__main__":
-    '''wiktionary.process_root()
-    print_dict_infos(None, "TranslationDictionariesBuilder/translation_dict.db", "ita", "wiki")
-    #apertium.download_apertium()
+    wiktionary.process_root()
+    #print_dict_infos(None, "TranslationDictionariesBuilder/translation_dict.db", "ita", "wiki")
+    apertium.download_apertium()
     apertium.process_root()
-    print_dict_infos(None, "TranslationDictionariesBuilder/translation_dict.db", "ita", "apertium")
     fredict.process_root()
-    print_dict_infos(None, "TranslationDictionariesBuilder/translation_dict.db", "ita", "freedict")'''
     create_db_redux_copy()
     order_dictionary()
-    '''ranker = WordTranslationRanker()
-    conn, cursor = create_and_define_database("TranslationDictionariesBuilder/translation_dict_ordered.db")
-    conn_old = sqlite3.connect("TranslationDictionariesBuilder/translation_dict_redux.db")
-    order_language_dict(ranker, conn, conn_old, "ita", True)'''
     
