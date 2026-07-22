@@ -1,0 +1,721 @@
+Fetching model registry: https://storage.googleapis.com/moz-fx-translations-data--303e-prod-translations-data/db/models.json
+[ar-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ar/aren
+    downloading lex.50.50.aren.s2t.bin.gz
+    decompressing lex.50.50.aren.s2t.bin.gz
+    downloading model.aren.intgemm.alphas.bin.gz
+    decompressing model.aren.intgemm.alphas.bin.gz
+    downloading vocab.aren.spm.gz
+    decompressing vocab.aren.spm.gz
+[az-en] no stable released model found, skipping
+[be-en] no stable released model found, skipping
+[bg-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/bg/bgen
+    downloading lex.50.50.bgen.s2t.bin.gz
+    decompressing lex.50.50.bgen.s2t.bin.gz
+    downloading model.bgen.intgemm.alphas.bin.gz
+    decompressing model.bgen.intgemm.alphas.bin.gz
+    downloading vocab.bgen.spm.gz
+    decompressing vocab.bgen.spm.gz
+[bn-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/bn/bnen
+    downloading lex.50.50.bnen.s2t.bin.gz
+    decompressing lex.50.50.bnen.s2t.bin.gz
+    downloading model.bnen.intgemm.alphas.bin.gz
+    decompressing model.bnen.intgemm.alphas.bin.gz
+    downloading vocab.bnen.spm.gz
+    decompressing vocab.bnen.spm.gz
+[bs-en] no stable released model found, skipping
+[ca-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ca/caen
+    downloading lex.50.50.caen.s2t.bin.gz
+    decompressing lex.50.50.caen.s2t.bin.gz
+    downloading model.caen.intgemm.alphas.bin.gz
+    decompressing model.caen.intgemm.alphas.bin.gz
+    downloading vocab.caen.spm.gz
+    decompressing vocab.caen.spm.gz
+[cs-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/cs/csen
+    downloading lex.50.50.csen.s2t.bin.gz
+    decompressing lex.50.50.csen.s2t.bin.gz
+    downloading model.csen.intgemm.alphas.bin.gz
+    decompressing model.csen.intgemm.alphas.bin.gz
+    downloading vocab.csen.spm.gz
+    decompressing vocab.csen.spm.gz
+[da-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/da/daen
+    downloading lex.50.50.daen.s2t.bin.gz
+    decompressing lex.50.50.daen.s2t.bin.gz
+    downloading model.daen.intgemm.alphas.bin.gz
+    decompressing model.daen.intgemm.alphas.bin.gz
+    downloading vocab.daen.spm.gz
+    decompressing vocab.daen.spm.gz
+[de-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/de/deen
+    downloading lex.50.50.deen.s2t.bin.gz
+    decompressing lex.50.50.deen.s2t.bin.gz
+    downloading model.deen.intgemm.alphas.bin.gz
+    decompressing model.deen.intgemm.alphas.bin.gz
+    downloading vocab.deen.spm.gz
+    decompressing vocab.deen.spm.gz
+[el-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/el/elen
+    downloading lex.50.50.elen.s2t.bin.gz
+    decompressing lex.50.50.elen.s2t.bin.gz
+    downloading model.elen.intgemm.alphas.bin.gz
+    decompressing model.elen.intgemm.alphas.bin.gz
+    downloading vocab.elen.spm.gz
+    decompressing vocab.elen.spm.gz
+[en-ar] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ar/enar
+    downloading lex.50.50.enar.s2t.bin.gz
+    decompressing lex.50.50.enar.s2t.bin.gz
+    downloading model.enar.intgemm.alphas.bin.gz
+    decompressing model.enar.intgemm.alphas.bin.gz
+    downloading vocab.enar.spm.gz
+    decompressing vocab.enar.spm.gz
+[en-az] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/az/enaz
+    downloading lex.50.50.enaz.s2t.bin.gz
+    decompressing lex.50.50.enaz.s2t.bin.gz
+    downloading model.enaz.intgemm.alphas.bin.gz
+    decompressing model.enaz.intgemm.alphas.bin.gz
+    downloading vocab.enaz.spm.gz
+    decompressing vocab.enaz.spm.gz
+[en-bg] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/bg/enbg
+    downloading lex.50.50.enbg.s2t.bin.gz
+    decompressing lex.50.50.enbg.s2t.bin.gz
+    downloading model.enbg.intgemm.alphas.bin.gz
+    decompressing model.enbg.intgemm.alphas.bin.gz
+    downloading vocab.enbg.spm.gz
+    decompressing vocab.enbg.spm.gz
+[en-bn] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/bn/enbn
+    downloading lex.50.50.enbn.s2t.bin.gz
+    decompressing lex.50.50.enbn.s2t.bin.gz
+    downloading model.enbn.intgemm.alphas.bin.gz
+    decompressing model.enbn.intgemm.alphas.bin.gz
+    downloading vocab.enbn.spm.gz
+    decompressing vocab.enbn.spm.gz
+[en-bs] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/bs/enbs
+    downloading lex.50.50.enbs.s2t.bin.gz
+    decompressing lex.50.50.enbs.s2t.bin.gz
+    downloading model.enbs.intgemm.alphas.bin.gz
+    decompressing model.enbs.intgemm.alphas.bin.gz
+    downloading vocab.enbs.spm.gz
+    decompressing vocab.enbs.spm.gz
+[en-ca] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ca/enca
+    downloading lex.50.50.enca.s2t.bin.gz
+    decompressing lex.50.50.enca.s2t.bin.gz
+    downloading model.enca.intgemm.alphas.bin.gz
+    decompressing model.enca.intgemm.alphas.bin.gz
+    downloading vocab.enca.spm.gz
+    decompressing vocab.enca.spm.gz
+[en-cs] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/cs/encs
+    downloading lex.50.50.encs.s2t.bin.gz
+    decompressing lex.50.50.encs.s2t.bin.gz
+    downloading model.encs.intgemm.alphas.bin.gz
+    decompressing model.encs.intgemm.alphas.bin.gz
+    downloading vocab.encs.spm.gz
+    decompressing vocab.encs.spm.gz
+[en-da] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/da/enda
+    downloading lex.50.50.enda.s2t.bin.gz
+    decompressing lex.50.50.enda.s2t.bin.gz
+    downloading model.enda.intgemm.alphas.bin.gz
+    decompressing model.enda.intgemm.alphas.bin.gz
+    downloading vocab.enda.spm.gz
+    decompressing vocab.enda.spm.gz
+[en-de] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/de/ende
+    downloading lex.50.50.ende.s2t.bin.gz
+    decompressing lex.50.50.ende.s2t.bin.gz
+    downloading model.ende.intgemm.alphas.bin.gz
+    decompressing model.ende.intgemm.alphas.bin.gz
+    downloading vocab.ende.spm.gz
+    decompressing vocab.ende.spm.gz
+[en-el] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/el/enel
+    downloading lex.50.50.enel.s2t.bin.gz
+    decompressing lex.50.50.enel.s2t.bin.gz
+    downloading model.enel.intgemm.alphas.bin.gz
+    decompressing model.enel.intgemm.alphas.bin.gz
+    downloading vocab.enel.spm.gz
+    decompressing vocab.enel.spm.gz
+[en-es] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/es/enes
+    downloading lex.50.50.enes.s2t.bin.gz
+    decompressing lex.50.50.enes.s2t.bin.gz
+    downloading model.enes.intgemm.alphas.bin.gz
+    decompressing model.enes.intgemm.alphas.bin.gz
+    downloading vocab.enes.spm.gz
+    decompressing vocab.enes.spm.gz
+[en-et] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/et/enet
+    downloading lex.50.50.enet.s2t.bin.gz
+    decompressing lex.50.50.enet.s2t.bin.gz
+    downloading model.enet.intgemm.alphas.bin.gz
+    decompressing model.enet.intgemm.alphas.bin.gz
+    downloading vocab.enet.spm.gz
+    decompressing vocab.enet.spm.gz
+[en-eu] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/eu/eneu
+    downloading lex.50.50.eneu.s2t.bin.gz
+    decompressing lex.50.50.eneu.s2t.bin.gz
+    downloading model.eneu.intgemm.alphas.bin.gz
+    decompressing model.eneu.intgemm.alphas.bin.gz
+    downloading vocab.eneu.spm.gz
+    decompressing vocab.eneu.spm.gz
+[en-fa] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/fa/enfa
+    downloading lex.50.50.enfa.s2t.bin.gz
+    decompressing lex.50.50.enfa.s2t.bin.gz
+    downloading model.enfa.intgemm.alphas.bin.gz
+    decompressing model.enfa.intgemm.alphas.bin.gz
+    downloading vocab.enfa.spm.gz
+    decompressing vocab.enfa.spm.gz
+[en-fi] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/fi/enfi
+    downloading lex.50.50.enfi.s2t.bin.gz
+    decompressing lex.50.50.enfi.s2t.bin.gz
+    downloading model.enfi.intgemm.alphas.bin.gz
+    decompressing model.enfi.intgemm.alphas.bin.gz
+    downloading vocab.enfi.spm.gz
+    decompressing vocab.enfi.spm.gz
+[en-fr] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/fr/enfr
+    downloading lex.50.50.enfr.s2t.bin.gz
+    decompressing lex.50.50.enfr.s2t.bin.gz
+    downloading model.enfr.intgemm.alphas.bin.gz
+    decompressing model.enfr.intgemm.alphas.bin.gz
+    downloading vocab.enfr.spm.gz
+    decompressing vocab.enfr.spm.gz
+[en-gl] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/gl/engl
+    downloading lex.50.50.engl.s2t.bin.gz
+    decompressing lex.50.50.engl.s2t.bin.gz
+    downloading model.engl.intgemm.alphas.bin.gz
+    decompressing model.engl.intgemm.alphas.bin.gz
+    downloading vocab.engl.spm.gz
+    decompressing vocab.engl.spm.gz
+[en-gu] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/gu/engu
+    downloading lex.50.50.engu.s2t.bin.gz
+    decompressing lex.50.50.engu.s2t.bin.gz
+    downloading model.engu.intgemm.alphas.bin.gz
+    decompressing model.engu.intgemm.alphas.bin.gz
+    downloading vocab.engu.spm.gz
+    decompressing vocab.engu.spm.gz
+[en-he] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/he/enhe
+    downloading lex.50.50.enhe.s2t.bin.gz
+    decompressing lex.50.50.enhe.s2t.bin.gz
+    downloading model.enhe.intgemm.alphas.bin.gz
+    decompressing model.enhe.intgemm.alphas.bin.gz
+    downloading vocab.enhe.spm.gz
+    decompressing vocab.enhe.spm.gz
+[en-hi] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/hi/enhi
+    downloading lex.50.50.enhi.s2t.bin.gz
+    decompressing lex.50.50.enhi.s2t.bin.gz
+    downloading model.enhi.intgemm.alphas.bin.gz
+    decompressing model.enhi.intgemm.alphas.bin.gz
+    downloading vocab.enhi.spm.gz
+    decompressing vocab.enhi.spm.gz
+[en-hr] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/hr/enhr
+    downloading lex.50.50.enhr.s2t.bin.gz
+    decompressing lex.50.50.enhr.s2t.bin.gz
+    downloading model.enhr.intgemm.alphas.bin.gz
+    decompressing model.enhr.intgemm.alphas.bin.gz
+    downloading vocab.enhr.spm.gz
+    decompressing vocab.enhr.spm.gz
+[en-hu] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/hu/enhu
+    downloading lex.50.50.enhu.s2t.bin.gz
+    decompressing lex.50.50.enhu.s2t.bin.gz
+    downloading model.enhu.intgemm.alphas.bin.gz
+    decompressing model.enhu.intgemm.alphas.bin.gz
+    downloading vocab.enhu.spm.gz
+    decompressing vocab.enhu.spm.gz
+[en-id] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/id/enid
+    downloading lex.50.50.enid.s2t.bin.gz
+    decompressing lex.50.50.enid.s2t.bin.gz
+    downloading model.enid.intgemm.alphas.bin.gz
+    decompressing model.enid.intgemm.alphas.bin.gz
+    downloading vocab.enid.spm.gz
+    decompressing vocab.enid.spm.gz
+[en-is] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/is/enis
+    downloading lex.50.50.enis.s2t.bin.gz
+    decompressing lex.50.50.enis.s2t.bin.gz
+    downloading model.enis.intgemm.alphas.bin.gz
+    decompressing model.enis.intgemm.alphas.bin.gz
+    downloading vocab.enis.spm.gz
+    decompressing vocab.enis.spm.gz
+[en-it] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/it/enit
+    downloading lex.50.50.enit.s2t.bin.gz
+    decompressing lex.50.50.enit.s2t.bin.gz
+    downloading model.enit.intgemm.alphas.bin.gz
+    decompressing model.enit.intgemm.alphas.bin.gz
+    downloading vocab.enit.spm.gz
+    decompressing vocab.enit.spm.gz
+[en-ja] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ja/enja
+    downloading lex.50.50.enja.s2t.bin.gz
+    decompressing lex.50.50.enja.s2t.bin.gz
+    downloading model.enja.intgemm.alphas.bin.gz
+    decompressing model.enja.intgemm.alphas.bin.gz
+    downloading srcvocab.enja.spm.gz
+    decompressing srcvocab.enja.spm.gz
+    downloading trgvocab.enja.spm.gz
+    decompressing trgvocab.enja.spm.gz
+[en-kn] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/kn/enkn
+    downloading lex.50.50.enkn.s2t.bin.gz
+    decompressing lex.50.50.enkn.s2t.bin.gz
+    downloading model.enkn.intgemm.alphas.bin.gz
+    decompressing model.enkn.intgemm.alphas.bin.gz
+    downloading vocab.enkn.spm.gz
+    decompressing vocab.enkn.spm.gz
+[en-ko] using architecture='base' releaseStatus='Release Desktop' -> MozillaModelsDownloader/mozilla_models/ko/enko
+    downloading lex.50.50.enko.s2t.bin.gz
+    decompressing lex.50.50.enko.s2t.bin.gz
+    downloading model.enko.intgemm.alphas.bin.gz
+    decompressing model.enko.intgemm.alphas.bin.gz
+    downloading vocab.enko.spm.gz
+    decompressing vocab.enko.spm.gz
+[en-lt] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/lt/enlt
+    downloading lex.50.50.enlt.s2t.bin.gz
+    decompressing lex.50.50.enlt.s2t.bin.gz
+    downloading model.enlt.intgemm.alphas.bin.gz
+    decompressing model.enlt.intgemm.alphas.bin.gz
+    downloading vocab.enlt.spm.gz
+    decompressing vocab.enlt.spm.gz
+[en-lv] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/lv/enlv
+    downloading lex.50.50.enlv.s2t.bin.gz
+    decompressing lex.50.50.enlv.s2t.bin.gz
+    downloading model.enlv.intgemm.alphas.bin.gz
+    decompressing model.enlv.intgemm.alphas.bin.gz
+    downloading vocab.enlv.spm.gz
+    decompressing vocab.enlv.spm.gz
+[en-ml] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ml/enml
+    downloading lex.50.50.enml.s2t.bin.gz
+    decompressing lex.50.50.enml.s2t.bin.gz
+    downloading model.enml.intgemm.alphas.bin.gz
+    decompressing model.enml.intgemm.alphas.bin.gz
+    downloading vocab.enml.spm.gz
+    decompressing vocab.enml.spm.gz
+[en-ms] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ms/enms
+    downloading lex.50.50.enms.s2t.bin.gz
+    decompressing lex.50.50.enms.s2t.bin.gz
+    downloading model.enms.intgemm.alphas.bin.gz
+    decompressing model.enms.intgemm.alphas.bin.gz
+    downloading vocab.enms.spm.gz
+    decompressing vocab.enms.spm.gz
+[en-nb] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/nb/ennb
+    downloading lex.50.50.ennb.s2t.bin.gz
+    decompressing lex.50.50.ennb.s2t.bin.gz
+    downloading model.ennb.intgemm.alphas.bin.gz
+    decompressing model.ennb.intgemm.alphas.bin.gz
+    downloading vocab.ennb.spm.gz
+    decompressing vocab.ennb.spm.gz
+[en-nl] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/nl/ennl
+    downloading lex.50.50.ennl.s2t.bin.gz
+    decompressing lex.50.50.ennl.s2t.bin.gz
+    downloading model.ennl.intgemm.alphas.bin.gz
+    decompressing model.ennl.intgemm.alphas.bin.gz
+    downloading vocab.ennl.spm.gz
+    decompressing vocab.ennl.spm.gz
+[en-no] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/no/enno
+    downloading lex.50.50.enno.s2t.bin.gz
+    decompressing lex.50.50.enno.s2t.bin.gz
+    downloading model.enno.intgemm.alphas.bin.gz
+    decompressing model.enno.intgemm.alphas.bin.gz
+    downloading vocab.enno.spm.gz
+    decompressing vocab.enno.spm.gz
+[en-pl] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/pl/enpl
+    downloading lex.50.50.enpl.s2t.bin.gz
+    decompressing lex.50.50.enpl.s2t.bin.gz
+    downloading model.enpl.intgemm.alphas.bin.gz
+    decompressing model.enpl.intgemm.alphas.bin.gz
+    downloading vocab.enpl.spm.gz
+    decompressing vocab.enpl.spm.gz
+[en-pt] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/pt/enpt
+    downloading lex.50.50.enpt.s2t.bin.gz
+    decompressing lex.50.50.enpt.s2t.bin.gz
+    downloading model.enpt.intgemm.alphas.bin.gz
+    decompressing model.enpt.intgemm.alphas.bin.gz
+    downloading vocab.enpt.spm.gz
+    decompressing vocab.enpt.spm.gz
+[en-ro] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ro/enro
+    downloading lex.50.50.enro.s2t.bin.gz
+    decompressing lex.50.50.enro.s2t.bin.gz
+    downloading model.enro.intgemm.alphas.bin.gz
+    decompressing model.enro.intgemm.alphas.bin.gz
+    downloading vocab.enro.spm.gz
+    decompressing vocab.enro.spm.gz
+[en-ru] using architecture='base' releaseStatus='Release Desktop' -> MozillaModelsDownloader/mozilla_models/ru/enru
+    downloading lex.50.50.enru.s2t.bin.gz
+    decompressing lex.50.50.enru.s2t.bin.gz
+    downloading model.enru.intgemm.alphas.bin.gz
+    decompressing model.enru.intgemm.alphas.bin.gz
+    downloading vocab.enru.spm.gz
+    decompressing vocab.enru.spm.gz
+[en-sk] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/sk/ensk
+    downloading lex.50.50.ensk.s2t.bin.gz
+    decompressing lex.50.50.ensk.s2t.bin.gz
+    downloading model.ensk.intgemm.alphas.bin.gz
+    decompressing model.ensk.intgemm.alphas.bin.gz
+    downloading vocab.ensk.spm.gz
+    decompressing vocab.ensk.spm.gz
+[en-sl] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/sl/ensl
+    downloading lex.50.50.ensl.s2t.bin.gz
+    decompressing lex.50.50.ensl.s2t.bin.gz
+    downloading model.ensl.intgemm.alphas.bin.gz
+    decompressing model.ensl.intgemm.alphas.bin.gz
+    downloading vocab.ensl.spm.gz
+    decompressing vocab.ensl.spm.gz
+[en-sq] no stable released model found, skipping
+[en-sr] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/sr/ensr
+    downloading lex.50.50.ensr.s2t.bin.gz
+    decompressing lex.50.50.ensr.s2t.bin.gz
+    downloading model.ensr.intgemm.alphas.bin.gz
+    decompressing model.ensr.intgemm.alphas.bin.gz
+    downloading vocab.ensr.spm.gz
+    decompressing vocab.ensr.spm.gz
+[en-sv] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/sv/ensv
+    downloading lex.50.50.ensv.s2t.bin.gz
+    decompressing lex.50.50.ensv.s2t.bin.gz
+    downloading model.ensv.intgemm.alphas.bin.gz
+    decompressing model.ensv.intgemm.alphas.bin.gz
+    downloading vocab.ensv.spm.gz
+    decompressing vocab.ensv.spm.gz
+[en-ta] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ta/enta
+    downloading lex.50.50.enta.s2t.bin.gz
+    decompressing lex.50.50.enta.s2t.bin.gz
+    downloading model.enta.intgemm.alphas.bin.gz
+    decompressing model.enta.intgemm.alphas.bin.gz
+    downloading vocab.enta.spm.gz
+    decompressing vocab.enta.spm.gz
+[en-te] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/te/ente
+    downloading lex.50.50.ente.s2t.bin.gz
+    decompressing lex.50.50.ente.s2t.bin.gz
+    downloading model.ente.intgemm.alphas.bin.gz
+    decompressing model.ente.intgemm.alphas.bin.gz
+    downloading vocab.ente.spm.gz
+    decompressing vocab.ente.spm.gz
+[en-th] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/th/enth
+    downloading lex.50.50.enth.s2t.bin.gz
+    decompressing lex.50.50.enth.s2t.bin.gz
+    downloading model.enth.intgemm.alphas.bin.gz
+    decompressing model.enth.intgemm.alphas.bin.gz
+    downloading vocab.enth.spm.gz
+    decompressing vocab.enth.spm.gz
+[en-tr] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/tr/entr
+    downloading lex.50.50.entr.s2t.bin.gz
+    decompressing lex.50.50.entr.s2t.bin.gz
+    downloading model.entr.intgemm.alphas.bin.gz
+    decompressing model.entr.intgemm.alphas.bin.gz
+    downloading vocab.entr.spm.gz
+    decompressing vocab.entr.spm.gz
+[en-uk] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/uk/enuk
+    downloading lex.50.50.enuk.s2t.bin.gz
+    decompressing lex.50.50.enuk.s2t.bin.gz
+    downloading model.enuk.intgemm.alphas.bin.gz
+    decompressing model.enuk.intgemm.alphas.bin.gz
+    downloading vocab.enuk.spm.gz
+    decompressing vocab.enuk.spm.gz
+[en-vi] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/vi/envi
+    downloading lex.50.50.envi.s2t.bin.gz
+    decompressing lex.50.50.envi.s2t.bin.gz
+    downloading model.envi.intgemm.alphas.bin.gz
+    decompressing model.envi.intgemm.alphas.bin.gz
+    downloading vocab.envi.spm.gz
+    decompressing vocab.envi.spm.gz
+[en-zh] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/zh/enzh
+    downloading lex.50.50.enzh.s2t.bin.gz
+    decompressing lex.50.50.enzh.s2t.bin.gz
+    downloading model.enzh.intgemm.alphas.bin.gz
+    decompressing model.enzh.intgemm.alphas.bin.gz
+    downloading srcvocab.enzh.spm.gz
+    decompressing srcvocab.enzh.spm.gz
+    downloading trgvocab.enzh.spm.gz
+    decompressing trgvocab.enzh.spm.gz
+[en-zh_hant] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/zh_hant/enzh_hant
+    downloading lex.50.50.enzh_hant.s2t.bin.gz
+    decompressing lex.50.50.enzh_hant.s2t.bin.gz
+    downloading model.enzh_hant.intgemm.alphas.bin.gz
+    decompressing model.enzh_hant.intgemm.alphas.bin.gz
+    downloading srcvocab.enzh_hant.spm.gz
+    decompressing srcvocab.enzh_hant.spm.gz
+    downloading trgvocab.enzh_hant.spm.gz
+    decompressing trgvocab.enzh_hant.spm.gz
+[es-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/es/esen
+    downloading lex.50.50.esen.s2t.bin.gz
+    decompressing lex.50.50.esen.s2t.bin.gz
+    downloading model.esen.intgemm.alphas.bin.gz
+    decompressing model.esen.intgemm.alphas.bin.gz
+    downloading vocab.esen.spm.gz
+    decompressing vocab.esen.spm.gz
+[et-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/et/eten
+    downloading lex.50.50.eten.s2t.bin.gz
+    decompressing lex.50.50.eten.s2t.bin.gz
+    downloading model.eten.intgemm.alphas.bin.gz
+    decompressing model.eten.intgemm.alphas.bin.gz
+    downloading vocab.eten.spm.gz
+    decompressing vocab.eten.spm.gz
+[eu-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/eu/euen
+    downloading lex.50.50.euen.s2t.bin.gz
+    decompressing lex.50.50.euen.s2t.bin.gz
+    downloading model.euen.intgemm.alphas.bin.gz
+    decompressing model.euen.intgemm.alphas.bin.gz
+    downloading vocab.euen.spm.gz
+    decompressing vocab.euen.spm.gz
+[fa-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/fa/faen
+    downloading lex.50.50.faen.s2t.bin.gz
+    decompressing lex.50.50.faen.s2t.bin.gz
+    downloading model.faen.intgemm.alphas.bin.gz
+    decompressing model.faen.intgemm.alphas.bin.gz
+    downloading vocab.faen.spm.gz
+    decompressing vocab.faen.spm.gz
+[fi-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/fi/fien
+    downloading lex.50.50.fien.s2t.bin.gz
+    decompressing lex.50.50.fien.s2t.bin.gz
+    downloading model.fien.intgemm.alphas.bin.gz
+    decompressing model.fien.intgemm.alphas.bin.gz
+    downloading vocab.fien.spm.gz
+    decompressing vocab.fien.spm.gz
+[fr-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/fr/fren
+    downloading lex.50.50.fren.s2t.bin.gz
+    decompressing lex.50.50.fren.s2t.bin.gz
+    downloading model.fren.intgemm.alphas.bin.gz
+    decompressing model.fren.intgemm.alphas.bin.gz
+    downloading vocab.fren.spm.gz
+    decompressing vocab.fren.spm.gz
+[gl-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/gl/glen
+    downloading lex.50.50.glen.s2t.bin.gz
+    decompressing lex.50.50.glen.s2t.bin.gz
+    downloading model.glen.intgemm.alphas.bin.gz
+    decompressing model.glen.intgemm.alphas.bin.gz
+    downloading vocab.glen.spm.gz
+    decompressing vocab.glen.spm.gz
+[gu-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/gu/guen
+    downloading lex.50.50.guen.s2t.bin.gz
+    decompressing lex.50.50.guen.s2t.bin.gz
+    downloading model.guen.intgemm.alphas.bin.gz
+    decompressing model.guen.intgemm.alphas.bin.gz
+    downloading vocab.guen.spm.gz
+    decompressing vocab.guen.spm.gz
+[hbs-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/hbs/hbsen
+    downloading lex.50.50.hbsen.s2t.bin.gz
+    decompressing lex.50.50.hbsen.s2t.bin.gz
+    downloading model.hbsen.intgemm.alphas.bin.gz
+    decompressing model.hbsen.intgemm.alphas.bin.gz
+    downloading vocab.hbsen.spm.gz
+    decompressing vocab.hbsen.spm.gz
+[he-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/he/heen
+    downloading lex.50.50.heen.s2t.bin.gz
+    decompressing lex.50.50.heen.s2t.bin.gz
+    downloading model.heen.intgemm.alphas.bin.gz
+    decompressing model.heen.intgemm.alphas.bin.gz
+    downloading vocab.heen.spm.gz
+    decompressing vocab.heen.spm.gz
+[hi-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/hi/hien
+    downloading lex.50.50.hien.s2t.bin.gz
+    decompressing lex.50.50.hien.s2t.bin.gz
+    downloading model.hien.intgemm.alphas.bin.gz
+    decompressing model.hien.intgemm.alphas.bin.gz
+    downloading vocab.hien.spm.gz
+    decompressing vocab.hien.spm.gz
+[hr-en] no stable released model found, skipping
+[hu-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/hu/huen
+    downloading lex.50.50.huen.s2t.bin.gz
+    decompressing lex.50.50.huen.s2t.bin.gz
+    downloading model.huen.intgemm.alphas.bin.gz
+    decompressing model.huen.intgemm.alphas.bin.gz
+    downloading vocab.huen.spm.gz
+    decompressing vocab.huen.spm.gz
+[id-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/id/iden
+    downloading lex.50.50.iden.s2t.bin.gz
+    decompressing lex.50.50.iden.s2t.bin.gz
+    downloading model.iden.intgemm.alphas.bin.gz
+    decompressing model.iden.intgemm.alphas.bin.gz
+    downloading vocab.iden.spm.gz
+    decompressing vocab.iden.spm.gz
+[is-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/is/isen
+    downloading lex.50.50.isen.s2t.bin.gz
+    decompressing lex.50.50.isen.s2t.bin.gz
+    downloading model.isen.intgemm.alphas.bin.gz
+    decompressing model.isen.intgemm.alphas.bin.gz
+    downloading vocab.isen.spm.gz
+    decompressing vocab.isen.spm.gz
+[it-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/it/iten
+    downloading lex.50.50.iten.s2t.bin.gz
+    decompressing lex.50.50.iten.s2t.bin.gz
+    downloading model.iten.intgemm.alphas.bin.gz
+    decompressing model.iten.intgemm.alphas.bin.gz
+    downloading vocab.iten.spm.gz
+    decompressing vocab.iten.spm.gz
+[ja-en] using architecture='base' releaseStatus='Release Desktop' -> MozillaModelsDownloader/mozilla_models/ja/jaen
+    downloading lex.50.50.jaen.s2t.bin.gz
+    decompressing lex.50.50.jaen.s2t.bin.gz
+    downloading model.jaen.intgemm.alphas.bin.gz
+    decompressing model.jaen.intgemm.alphas.bin.gz
+    downloading vocab.jaen.spm.gz
+    decompressing vocab.jaen.spm.gz
+[kn-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/kn/knen
+    downloading lex.50.50.knen.s2t.bin.gz
+    decompressing lex.50.50.knen.s2t.bin.gz
+    downloading model.knen.intgemm.alphas.bin.gz
+    decompressing model.knen.intgemm.alphas.bin.gz
+    downloading vocab.knen.spm.gz
+    decompressing vocab.knen.spm.gz
+[ko-en] using architecture='base' releaseStatus='Release Desktop' -> MozillaModelsDownloader/mozilla_models/ko/koen
+    downloading lex.50.50.koen.s2t.bin.gz
+    decompressing lex.50.50.koen.s2t.bin.gz
+    downloading model.koen.intgemm.alphas.bin.gz
+    decompressing model.koen.intgemm.alphas.bin.gz
+    downloading vocab.koen.spm.gz
+    decompressing vocab.koen.spm.gz
+[lt-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/lt/lten
+    downloading lex.50.50.lten.s2t.bin.gz
+    decompressing lex.50.50.lten.s2t.bin.gz
+    downloading model.lten.intgemm.alphas.bin.gz
+    decompressing model.lten.intgemm.alphas.bin.gz
+    downloading vocab.lten.spm.gz
+    decompressing vocab.lten.spm.gz
+[lv-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/lv/lven
+    downloading lex.50.50.lven.s2t.bin.gz
+    decompressing lex.50.50.lven.s2t.bin.gz
+    downloading model.lven.intgemm.alphas.bin.gz
+    decompressing model.lven.intgemm.alphas.bin.gz
+    downloading vocab.lven.spm.gz
+    decompressing vocab.lven.spm.gz
+[ml-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ml/mlen
+    downloading lex.50.50.mlen.s2t.bin.gz
+    decompressing lex.50.50.mlen.s2t.bin.gz
+    downloading model.mlen.intgemm.alphas.bin.gz
+    decompressing model.mlen.intgemm.alphas.bin.gz
+    downloading vocab.mlen.spm.gz
+    decompressing vocab.mlen.spm.gz
+[mr-en] no stable released model found, skipping
+[ms-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ms/msen
+    downloading lex.50.50.msen.s2t.bin.gz
+    decompressing lex.50.50.msen.s2t.bin.gz
+    downloading model.msen.intgemm.alphas.bin.gz
+    decompressing model.msen.intgemm.alphas.bin.gz
+    downloading vocab.msen.spm.gz
+    decompressing vocab.msen.spm.gz
+[nb-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/nb/nben
+    downloading lex.50.50.nben.s2t.bin.gz
+    decompressing lex.50.50.nben.s2t.bin.gz
+    downloading model.nben.intgemm.alphas.bin.gz
+    decompressing model.nben.intgemm.alphas.bin.gz
+    downloading vocab.nben.spm.gz
+    decompressing vocab.nben.spm.gz
+[nl-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/nl/nlen
+    downloading lex.50.50.nlen.s2t.bin.gz
+    decompressing lex.50.50.nlen.s2t.bin.gz
+    downloading model.nlen.intgemm.alphas.bin.gz
+    decompressing model.nlen.intgemm.alphas.bin.gz
+    downloading vocab.nlen.spm.gz
+    decompressing vocab.nlen.spm.gz
+[nn-en] no stable released model found, skipping
+[no-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/no/noen
+    downloading lex.50.50.noen.s2t.bin.gz
+    decompressing lex.50.50.noen.s2t.bin.gz
+    downloading model.noen.intgemm.alphas.bin.gz
+    decompressing model.noen.intgemm.alphas.bin.gz
+    downloading vocab.noen.spm.gz
+    decompressing vocab.noen.spm.gz
+[pl-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/pl/plen
+    downloading lex.50.50.plen.s2t.bin.gz
+    decompressing lex.50.50.plen.s2t.bin.gz
+    downloading model.plen.intgemm.alphas.bin.gz
+    decompressing model.plen.intgemm.alphas.bin.gz
+    downloading vocab.plen.spm.gz
+    decompressing vocab.plen.spm.gz
+[pt-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/pt/pten
+    downloading lex.50.50.pten.s2t.bin.gz
+    decompressing lex.50.50.pten.s2t.bin.gz
+    downloading model.pten.intgemm.alphas.bin.gz
+    decompressing model.pten.intgemm.alphas.bin.gz
+    downloading vocab.pten.spm.gz
+    decompressing vocab.pten.spm.gz
+[ro-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ro/roen
+    downloading lex.50.50.roen.s2t.bin.gz
+    decompressing lex.50.50.roen.s2t.bin.gz
+    downloading model.roen.intgemm.alphas.bin.gz
+    decompressing model.roen.intgemm.alphas.bin.gz
+    downloading vocab.roen.spm.gz
+    decompressing vocab.roen.spm.gz
+[ru-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ru/ruen
+    downloading lex.50.50.ruen.s2t.bin.gz
+    decompressing lex.50.50.ruen.s2t.bin.gz
+    downloading model.ruen.intgemm.alphas.bin.gz
+    decompressing model.ruen.intgemm.alphas.bin.gz
+    downloading vocab.ruen.spm.gz
+    decompressing vocab.ruen.spm.gz
+[sk-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/sk/sken
+    downloading lex.50.50.sken.s2t.bin.gz
+    decompressing lex.50.50.sken.s2t.bin.gz
+    downloading model.sken.intgemm.alphas.bin.gz
+    decompressing model.sken.intgemm.alphas.bin.gz
+    downloading vocab.sken.spm.gz
+    decompressing vocab.sken.spm.gz
+[sl-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/sl/slen
+    downloading lex.50.50.slen.s2t.bin.gz
+    decompressing lex.50.50.slen.s2t.bin.gz
+    downloading model.slen.intgemm.alphas.bin.gz
+    decompressing model.slen.intgemm.alphas.bin.gz
+    downloading vocab.slen.spm.gz
+    decompressing vocab.slen.spm.gz
+[sq-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/sq/sqen
+    downloading lex.50.50.sqen.s2t.bin.gz
+    decompressing lex.50.50.sqen.s2t.bin.gz
+    downloading model.sqen.intgemm.alphas.bin.gz
+    decompressing model.sqen.intgemm.alphas.bin.gz
+    downloading vocab.sqen.spm.gz
+    decompressing vocab.sqen.spm.gz
+[sr-en] no stable released model found, skipping
+[sv-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/sv/sven
+    downloading lex.50.50.sven.s2t.bin.gz
+    decompressing lex.50.50.sven.s2t.bin.gz
+    downloading model.sven.intgemm.alphas.bin.gz
+    decompressing model.sven.intgemm.alphas.bin.gz
+    downloading vocab.sven.spm.gz
+    decompressing vocab.sven.spm.gz
+[ta-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/ta/taen
+    downloading lex.50.50.taen.s2t.bin.gz
+    decompressing lex.50.50.taen.s2t.bin.gz
+    downloading model.taen.intgemm.alphas.bin.gz
+    decompressing model.taen.intgemm.alphas.bin.gz
+    downloading vocab.taen.spm.gz
+    decompressing vocab.taen.spm.gz
+[te-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/te/teen
+    downloading lex.50.50.teen.s2t.bin.gz
+    decompressing lex.50.50.teen.s2t.bin.gz
+    downloading model.teen.intgemm.alphas.bin.gz
+    decompressing model.teen.intgemm.alphas.bin.gz
+    downloading vocab.teen.spm.gz
+    decompressing vocab.teen.spm.gz
+[th-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/th/then
+    downloading lex.50.50.then.s2t.bin.gz
+    decompressing lex.50.50.then.s2t.bin.gz
+    downloading model.then.intgemm.alphas.bin.gz
+    decompressing model.then.intgemm.alphas.bin.gz
+    downloading vocab.then.spm.gz
+    decompressing vocab.then.spm.gz
+[tr-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/tr/tren
+    downloading lex.50.50.tren.s2t.bin.gz
+    decompressing lex.50.50.tren.s2t.bin.gz
+    downloading model.tren.intgemm.alphas.bin.gz
+    decompressing model.tren.intgemm.alphas.bin.gz
+    downloading vocab.tren.spm.gz
+    decompressing vocab.tren.spm.gz
+[uk-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/uk/uken
+    downloading lex.50.50.uken.s2t.bin.gz
+    decompressing lex.50.50.uken.s2t.bin.gz
+    downloading model.uken.intgemm.alphas.bin.gz
+    decompressing model.uken.intgemm.alphas.bin.gz
+    downloading vocab.uken.spm.gz
+    decompressing vocab.uken.spm.gz
+[ur-en] no stable released model found, skipping
+[vi-en] using architecture='tiny' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/vi/vien
+    downloading lex.50.50.vien.s2t.bin.gz
+    decompressing lex.50.50.vien.s2t.bin.gz
+    downloading model.vien.intgemm.alphas.bin.gz
+    decompressing model.vien.intgemm.alphas.bin.gz
+    downloading vocab.vien.spm.gz
+    decompressing vocab.vien.spm.gz
+[zh-en] using architecture='base' releaseStatus='Release Desktop' -> MozillaModelsDownloader/mozilla_models/zh/zhen
+    downloading lex.50.50.zhen.s2t.bin.gz
+    decompressing lex.50.50.zhen.s2t.bin.gz
+    downloading model.zhen.intgemm.alphas.bin.gz
+    decompressing model.zhen.intgemm.alphas.bin.gz
+    downloading vocab.zhen.spm.gz
+    decompressing vocab.zhen.spm.gz
+[zh_hant-en] using architecture='base-memory' releaseStatus='Release' -> MozillaModelsDownloader/mozilla_models/zh_hant/zh_hanten
+    downloading lex.50.50.zh_hanten.s2t.bin.gz
+    decompressing lex.50.50.zh_hanten.s2t.bin.gz
+    downloading model.zh_hanten.intgemm.alphas.bin.gz
+    decompressing model.zh_hanten.intgemm.alphas.bin.gz
+    downloading srcvocab.zh_hanten.spm.gz
+    decompressing srcvocab.zh_hanten.spm.gz
+    downloading trgvocab.zh_hanten.spm.gz
+    decompressing trgvocab.zh_hanten.spm.gz
+
+Done. Languages processed: 53
+Pairs with no stable released model (9): az-en, be-en, bs-en, en-sq, hr-en, mr-en, nn-en, sr-en, ur-en

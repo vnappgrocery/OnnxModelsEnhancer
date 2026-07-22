@@ -28,6 +28,10 @@ TranslationDictionariesBuilder/translation_dict_ordered_old.db
 
 TranslationDictionariesBuilder/logs
 
+# mozilla models
+MozillaModelsDownloader/mozilla_models
+MozillaModelsDownloader/mozilla_models_compressed
+
 # C extensions
 *.so
 
